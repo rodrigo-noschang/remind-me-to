@@ -1,4 +1,5 @@
 import { defineConfig } from "drizzle-kit";
+import { parsedEnv } from "./src/env";
 
 function expandEnvReferences(value: string) {
 	return value.replace(/\$\{?([A-Z0-9_]+)\}?/gi, (match, name) => {
@@ -6,11 +7,7 @@ function expandEnvReferences(value: string) {
 	});
 }
 
-const databaseUrl = process.env.DATABASE_URL;
-
-if (!databaseUrl) {
-	throw new Error("Missing required environment variable: DATABASE_URL");
-}
+const { DATABASE_URL } = parsedEnv;
 
 export default defineConfig({
 	out: "./src/infra/migrations",
@@ -21,6 +18,6 @@ export default defineConfig({
 		table: "migrations",
 	},
 	dbCredentials: {
-		url: expandEnvReferences(databaseUrl),
+		url: expandEnvReferences(DATABASE_URL),
 	},
 });
