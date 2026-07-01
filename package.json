@@ -4,6 +4,8 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
+		"services:up": "docker compose --env-file .env -f src/infra/composer.yml up -d",
+		"services:down": "docker compose --env-file .env -f src/infra/composer.yml down",
 		"dev": "bun run --watch src/index.ts"
 	},
 	"devDependencies": {

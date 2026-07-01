@@ -1,0 +1,8 @@
+services:
+  database:
+    container_name: "postgres-dev"
+    image: "postgres:18.4-trixie"
+    env_file:
+      - "../../.env"
+    ports:
+      - "${POSTGRES_PORT}:5432"
