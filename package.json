@@ -8,13 +8,23 @@
 		"services:down": "docker compose --env-file .env -f src/infra/composer.yml down",
 		"migrations:generate": "bun run scripts/generate-migration.ts",
 		"migrations:apply": "bunx drizzle-kit migrate",
-		"dev": "bun run --watch src/index.ts"
+		"dev": "bun run --watch src/index.ts",
+		"commit": "cz",
+		"prepare": "husky"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
 	},
 	"devDependencies": {
 		"@types/bun": "^1.3.14",
 		"@types/figlet": "^1.7.0",
 		"@types/pg": "^8.20.0",
+		"commitizen": "^4.3.2",
+		"cz-conventional-changelog": "^3.3.0",
 		"drizzle-kit": "^0.31.10",
+		"husky": "^9.1.7",
 		"tsx": "^4.22.4"
 	},
 	"peerDependencies": {
