@@ -17,6 +17,8 @@ jobs:
         with:
           node-version: "lts/hydrogen"
 
+      - uses: oven-sh/setup-bun@v1 # Add this step
+
       - run: bun ci
 
       - run: bun test
